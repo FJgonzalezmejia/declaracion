@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi novia?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff6f91;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+            margin: 20px 0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 1em;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #yes {
+            background-color: #ff6f91;
+            color: white;
+        }
+        #yes:hover {
+            background-color: #ff3e6a;
+        }
+        #no {
+            background-color: #c3c3c3;
+            color: white;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        #no:hover {
+            transform: translateX(calc(50px - 100px * (Math.random())));
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Quieres ser mi novia? ❤️</h1>
+        <p>Eres la persona más especial para mí, y me encantaría saber si te gustaría ser mi compañera de aventuras. 😊</p>
+        <div class="buttons">
+            <button id="yes">Sí</button>
+            <button id="no">No</button>
+        </div>
+        <p id="response" style="display:none; font-size:1.5em; color:#ff6f91;"></p>
+    </div>
+
+    <script>
+        document.getElementById("yes").addEventListener("click", function() {
+            // Mostrar mensaje de confirmación en la misma página
+            document.getElementById("response").style.display = "block";
+            document.getElementById("response").textContent = "¡Sabía que dirías que sí! 🥰❤️";
+
+            // Generar enlace de WhatsApp
+            const telefono = "50247012204"; // Cambia '50212345678' por el número real
+            const mensaje = "¡Sabía que dirías que sí! Estoy muy feliz 🥰❤️";
+            const urlWhatsApp = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+            // Mostrar enlace de WhatsApp
+            const enlaceWhatsApp = document.createElement("a");
+            enlaceWhatsApp.href = urlWhatsApp;
+            enlaceWhatsApp.textContent = "Enviar mensaje en WhatsApp ❤️";
+            enlaceWhatsApp.target = "_blank";
+            enlaceWhatsApp.style.display = "block";
+            enlaceWhatsApp.style.marginTop = "20px";
+            enlaceWhatsApp.style.color = "#ff6f91";
+            enlaceWhatsApp.style.fontSize = "1.2em";
+
+            // Añadir el enlace debajo del mensaje
+            document.getElementById("response").appendChild(enlaceWhatsApp);
+        });
+
+        document.getElementById("no").addEventListener("mouseover", function() {
+            const noButton = document.getElementById("no");
+            const x = Math.floor(Math.random() * 100) - 50;
+            const y = Math.floor(Math.random() * 100) - 50;
+            noButton.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body>
+</html>
